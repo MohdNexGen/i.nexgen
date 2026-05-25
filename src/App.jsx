@@ -1,209 +1,84 @@
 import "./App.css";
-import { useState } from "react";
-import emailjs from "@emailjs/browser";
 
 function App() {
+  return (
+    <div className="hero">
 
-const [message,setMessage] =
-useState("");
+      <nav className="navbar">
+        <h1 className="logo">NexGen Technology</h1>
 
-function handleSubmit(e){
-
-e.preventDefault();
-
-const student_name =
-e.target.student_name.value;
-
-const student_email =
-e.target.student_email.value;
-
-const student_message =
-e.target.student_message.value;
+        <div className="nav-links">
+          <a href="#">Home</a>
+          <a href="#">Courses</a>
+          <a href="#">Contact</a>
+        </div>
+      </nav>
 
 
-emailjs.send(
+      <div className="hero-content">
 
-"nexgen_gmail",
-
-"template_zvfw3qd",
-
-{
-
-student_name,
-student_email,
-student_message,
-
-},
-
-"H5xDt1e48EHqf_U4U"
-
-)
-
-.then(()=>{
+        <h1 className="title">
+          Learn Coding.
+          Build Projects.
+          Get International Opportunities.
+        </h1>
 
 
-return emailjs.send(
+        <p className="description">
 
-"nexgen_gmail",
+          NexGen teaches practical skills:
 
-"template_rbz2rme",
+          HTML • CSS • JavaScript ES6 • React • Node.js • Express • Git • GitHub
 
-{
-
-student_name,
-student_email,
-student_message,
-
-},
-
-"H5xDt1e48EHqf_U4U"
-
-);
+        </p>
 
 
-})
-
-.then(()=>{
-
-setMessage(
-
-"✅ Registration sent successfully!"
-
-);
-
-e.target.reset();
+        <h2>
+          Students build real websites and portfolios
+          for international companies and technology careers.
+        </h2>
 
 
-setTimeout(()=>{
+        <div className="courses">
 
-setMessage("");
+          <h3>Courses</h3>
 
-},5000);
+          <ul>
 
+            <li>Frontend Development</li>
 
-})
+            <li>Backend Development</li>
 
-.catch((error)=>{
+            <li>React Projects</li>
 
-console.log(
+            <li>Node + Express</li>
 
-"EmailJS Error:",
+            <li>Git & GitHub</li>
 
-error
+            <li>Portfolio Building</li>
 
-);
+          </ul>
 
-setMessage(
-
-"❌ Failed to send registration."
-
-);
+        </div>
 
 
-setTimeout(()=>{
+        <button
+          className="btn"
+          onClick={() =>
+            window.location =
+              "mailto:i.nexgen@gmail.com"
+          }
+        >
 
-setMessage("");
+          Apply Now
 
-},5000);
-
-
-});
+        </button>
 
 
+      </div>
+
+    </div>
+  );
 }
-
-
-
-return(
-
-<div className="hero">
-
-<div className="container">
-
-<h1>
-
-NexGen Technology
-
-</h1>
-
-
-<h2>
-
-Student Registration
-
-</h2>
-
-
-<p>
-
-Register for Front-End and Back-End classes.
-
-</p>
-
-
-
-<form onSubmit={handleSubmit}>
-
-
-<input
-
-name="student_name"
-
-placeholder="Student Name"
-
-required
-
-/>
-
-
-<input
-
-type="email"
-
-name="student_email"
-
-placeholder="Student Email"
-
-required
-
-/>
-
-
-<textarea
-
-name="student_message"
-
-placeholder="Why do you want to join?"
-
-required
-
-/>
-
-
-<button type="submit">
-
-Register Now
-
-</button>
-
-
-</form>
-
-
-<h3>
-
-{message}
-
-</h3>
-
-
-</div>
-
-</div>
-
-);
-
-}
-
 
 export default App;
